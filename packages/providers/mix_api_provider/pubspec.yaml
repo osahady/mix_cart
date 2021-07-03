@@ -1,0 +1,12 @@
+name: mix_api_provider
+description: A Dart package that provides data from Mix Cart API.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  dio: ^4.0.0
+  models:
+    path: ../../models
