@@ -1,14 +1,15 @@
 import 'package:mix_api_provider/mix_api_provider.dart';
 import 'package:models/models.dart';
-import 'package:dio/dio.dart';
 
 class BrowseProductsRepository {
   final _api = MixApiProvider();
 
-  Future<List<Product>> getProducts() async {
+  Future<List<Product>> getProducts({
+    required Map<String, dynamic> qry,
+  }) async {
     Map<String, dynamic> res;
     try {
-      res = await _api.getProducts();
+      res = await _api.getHttp(qryParams: qry);
     } catch (e) {
       rethrow;
     }

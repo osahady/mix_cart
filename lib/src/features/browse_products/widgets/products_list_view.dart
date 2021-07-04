@@ -25,9 +25,12 @@ class _ProductsListViewState extends State<ProductsListView> {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
-        if (index > widget.state.products.length) return BottomLoader();
+        if (index >= widget.state.products.length) return BottomLoader();
         final product = widget.state.products[index];
-        return ProductTile(product: product);
+        return ProductTile(
+          product: product,
+          index: index + 1,
+        );
       },
       separatorBuilder: (context, index) => Divider(),
       itemCount: widget.state.hasReachedMax

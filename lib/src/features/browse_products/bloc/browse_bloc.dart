@@ -62,6 +62,10 @@ class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
   }
 
   Future<List<Product>> _fetchProducts([int startIndex = 0]) async {
-    return browseRepo.getProducts();
+    Map<String, dynamic> qryParams = {
+      'start': startIndex,
+      'limit': _productsLimit,
+    };
+    return browseRepo.getProducts(qry: qryParams);
   }
 }

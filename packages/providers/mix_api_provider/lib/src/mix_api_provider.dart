@@ -37,34 +37,15 @@ class MixApiProvider {
   final String _endpoint = "https://mixcart.com.tr/api";
   final Dio _dio = Dio();
 
-  Future<dynamic> getProducts() async {
-    // List<Product>? products;
-    // List rawProducts;
+  Future<Map<String, dynamic>> getHttp(
+      {required Map<String, dynamic> qryParams}) async {
+    late Response response;
     try {
-      Response response = await _dio.get(_endpoint + '/material');
+      response = await _dio.get(
+        _endpoint + '/material',
+        queryParameters: qryParams,
+      );
       print('Products Info: ${response.data}');
-      return response.data;
-    } on DioError catch (e) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx and is also not 304.
-      if (e.response != null) {
-        print('Dio error!');
-        print('STATUS: ${e.response?.statusCode}');
-        print('DATA: ${e.response?.data}');
-        print('HEADERS: ${e.response?.headers}');
-      } else {
-        // Error due to setting up or sending the request
-        print('Error sending request!');
-        print(e.message);
-      }
-    }
-    // return products;
-  }
-
-  Future<List<Product>?> getHttp() async {
-    late Response<List<Product>> response;
-    try {
-      response = await _dio.get<List<Product>>(_endpoint + '/material');
       return response.data;
     } catch (e) {
       throw HttpRequestException(
