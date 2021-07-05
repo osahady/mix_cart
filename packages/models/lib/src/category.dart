@@ -6,13 +6,13 @@ part 'category.g.dart';
 class Category {
   final int id;
   final String name;
-  final String description;
-  final AppImage image;
+  final String? description;
+  final String image;
 
   Category({
     required this.id,
     required this.name,
-    required this.description,
+    this.description,
     required this.image,
   });
 

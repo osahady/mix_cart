@@ -10,8 +10,8 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
   return Category(
     id: json['id'] as int,
     name: json['name'] as String,
-    description: json['description'] as String,
-    image: AppImage.fromJson(json['image'] as Map<String, dynamic>),
+    description: json['description'] as String?,
+    image: json['image'] as String,
   );
 }
 
