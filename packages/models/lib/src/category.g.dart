@@ -11,6 +11,13 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
     id: json['id'] as int,
     name: json['name'] as String,
     description: json['description'] as String,
-    image: Image.fromJson(json['image'] as Map<String, dynamic>),
+    image: AppImage.fromJson(json['image'] as Map<String, dynamic>),
   );
 }
+
+Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+      'image': instance.image,
+    };

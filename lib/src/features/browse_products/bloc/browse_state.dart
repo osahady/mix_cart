@@ -1,7 +1,13 @@
 part of 'browse_bloc.dart';
 
-enum BrowseStatus { initial, success, failure }
+//enum
+enum BrowseStatus {
+  initial,
+  success,
+  failure,
+}
 
+@JsonSerializable()
 class BrowseState extends Equatable {
   final BrowseStatus status;
   final List<Product> products;
@@ -27,9 +33,30 @@ class BrowseState extends Equatable {
 
   @override
   String toString() {
-    return '''PostState { status: $status, hasReachedMax: $hasReachedMax, products: ${products.length} }''';
+    return '''ProductState { status: $status, hasReachedMax: $hasReachedMax, products: ${products.length} }''';
   }
 
   @override
   List<Object> get props => [status, products, hasReachedMax];
+
+  // factory BrowseState.fromMap(Map<String, dynamic> map) => _$BrowseStateFromJson(map);
+
+  // Map<String, dynamic> toMap() => _$BrowseStateToJson(this);
+
+  // Map<String, dynamic> toMap() {
+  //   return {
+  //     'status': status,
+  //     'products': products.map((x) => x.toMap()).toList(),
+  //     'hasReachedMax': hasReachedMax,
+  //   };
+  // }
+
+  // factory BrowseState.fromMap(Map<String, dynamic> map) {
+  //   return BrowseState(
+  //     status: map['status'],
+  //     products:
+  //         List<Product>.from(map['products']?.map((x) => Product.fromMap(x))),
+  //     hasReachedMax: map['hasReachedMax'],
+  //   );
+  // }
 }

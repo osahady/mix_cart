@@ -9,7 +9,7 @@ class BrowseProductsRepository {
   }) async {
     Map<String, dynamic> res;
     try {
-      res = await _api.getHttp(qryParams: qry);
+      res = await _api.getHttp(qryParams: qry, path: '/material');
     } catch (e) {
       rethrow;
     }
@@ -17,10 +17,30 @@ class BrowseProductsRepository {
     List<Product> products;
     try {
       rawProducts = res['data'] as List;
-      products = rawProducts.map((e) => Product.fromJson(e)).toList();
+      products = rawProducts.map((map) => Product.fromMap(map)).toList();
     } catch (e) {
       throw JsonDeserializationException();
     }
     return products;
+  }
+
+  Future<List<Category>> getCategories({
+    required Map<String, dynamic> qry,
+  }) async {
+    Map<String, dynamic> res;
+    try {
+      res = await _api.getHttp(qryParams: qry, path: '/category');
+    } catch (e) {
+      rethrow;
+    }
+    List rawCategorys;
+    List<Category> categories;
+    try {
+      rawCategorys = res['data'] as List;
+      categories = rawCategorys.map((e) => Category.fromJson(e)).toList();
+    } catch (e) {
+      throw JsonDeserializationException();
+    }
+    return categories;
   }
 }

@@ -2,14 +2,14 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:models/models.dart';
 part 'product.g.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable()
 class Product {
   final int id;
   final String name;
   final double price;
   final String summary;
   final String link;
-  final List<Image> images;
+  final List<AppImage> images;
 
   Product({
     required this.id,
@@ -20,5 +20,7 @@ class Product {
     required this.images,
   });
 
-  factory Product.fromJson(Map<String, dynamic> map) => _$ProductFromJson(map);
+  factory Product.fromMap(Map<String, dynamic> map) => _$ProductFromJson(map);
+
+  Map<String, dynamic> toMap() => _$ProductToJson(this);
 }

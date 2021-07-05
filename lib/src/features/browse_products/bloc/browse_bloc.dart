@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:browse_products_repository/browse_products_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:models/models.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -32,11 +34,14 @@ class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
     BrowseEvent event,
   ) async* {
     if (event is ProductFetched) {
-      yield await _mapAdFetchedToState();
+      yield await _mapProductFetchedToState();
     }
+    // else if (event is CategoryFetched) {
+    //   yield await _mapCategoryFetchedToState();
+    // }
   }
 
-  Future<BrowseState> _mapAdFetchedToState() async {
+  Future<BrowseState> _mapProductFetchedToState() async {
     if (state.hasReachedMax) return state;
 
     try {
@@ -68,4 +73,10 @@ class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
     };
     return browseRepo.getProducts(qry: qryParams);
   }
+
+  // @override
+  // BrowseState? fromJson(Map<String, dynamic> json) => BrowseState.fromMap(json);
+
+  // @override
+  // Map<String, dynamic>? toJson(BrowseState state) => state.toMap();
 }

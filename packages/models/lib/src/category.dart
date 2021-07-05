@@ -2,12 +2,12 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:models/models.dart';
 part 'category.g.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable()
 class Category {
   final int id;
   final String name;
   final String description;
-  final Image image;
+  final AppImage image;
 
   Category({
     required this.id,
@@ -18,4 +18,6 @@ class Category {
 
   factory Category.fromJson(Map<String, dynamic> map) =>
       _$CategoryFromJson(map);
+
+  Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }
