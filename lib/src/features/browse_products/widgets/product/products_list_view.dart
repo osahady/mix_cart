@@ -43,7 +43,7 @@ class _ProductsListViewState extends State<ProductsListView> {
                       // return Text('bringing cats');
 
                       return SizedBox(
-                        height: 100,
+                        height: 300,
                         child: BlocBuilder<BrowseCategoriesBloc,
                             BrowseCategoriesState>(
                           builder: (context, state) {

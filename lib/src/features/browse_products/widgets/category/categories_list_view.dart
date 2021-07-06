@@ -32,17 +32,35 @@ class _CategoriesListViewState extends State<CategoriesListView> {
           if (index >= widget.state.categories.length) return BottomLoader();
           final category = widget.state.categories[index];
           // return SizedBox(
+          //   width: 100,
           //   height: 100,
           //   child: ListTile(
           //     title: Text('${category.name}'),
           //   ),
           // );
-          return Text(
-            '${category.name}',
-            // textDirection: TextDirection.rtl,
+          String url = "https://mixcart.com.tr/storage/${category.image}";
+          return Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Text('${category.name}'),
+                Container(
+                  width: 200,
+                  height: 200,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                    child: Image.network(url),
+                  ),
+                ),
+              ],
+            ),
           );
+
+          // return Text(
+          //   '${category.name}',
+          // );
         },
-        separatorBuilder: (context, index) => Text('  |  '),
+        separatorBuilder: (context, index) => Text('    '),
         itemCount: widget.state.hasReachedMax
             ? widget.state.categories.length
             : widget.state.categories.length + 1,
