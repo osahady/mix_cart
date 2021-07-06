@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mix/src/features/browse_cats/bloc/browse_categories_bloc.dart';
+import 'package:mix/src/features/browse_cats/bloc/categories_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
 
@@ -76,7 +76,7 @@ class _CategoriesListViewState extends State<CategoriesListView> {
   }
 
   void _onScroll() {
-    if (_isBottom) context.read<BrowseCategoriesBloc>().add(CategoryFetched());
+    if (_isBottom) context.read<CategoriesBloc>().add(CategoryFetched());
   }
 
   bool get _isBottom {

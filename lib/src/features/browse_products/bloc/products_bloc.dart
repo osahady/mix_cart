@@ -8,13 +8,13 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:models/models.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'browse_event.dart';
-part 'browse_state.dart';
+part 'products_event.dart';
+part 'products_state.dart';
 
 const _productsLimit = 10;
 
-class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
-  BrowseBloc() : super(BrowseState());
+class ProductsBloc extends Bloc<BrowseEvent, BrowseState> {
+  ProductsBloc() : super(BrowseState());
 
   final browseRepo = BrowseProductsRepository();
 

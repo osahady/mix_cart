@@ -7,7 +7,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return BlocProvider(
-//       create: (_) => BrowseCategoriesBloc()..add(CategoryFetched()),
+//       create: (_) => CategoriesBloc()..add(CategoryFetched()),
 //       child: CategoriesList(),
 //     );
 //   }

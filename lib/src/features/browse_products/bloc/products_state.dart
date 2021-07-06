@@ -1,4 +1,4 @@
-part of 'browse_bloc.dart';
+part of 'products_bloc.dart';
 
 //enum
 enum BrowseStatus {

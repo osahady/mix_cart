@@ -6,14 +6,14 @@ import 'package:equatable/equatable.dart';
 import 'package:models/models.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'browse_categories_event.dart';
-part 'browse_categories_state.dart';
+part 'categories_event.dart';
+part 'categories_state.dart';
 
 const _categoriesLimit = 10;
 
-class BrowseCategoriesBloc
+class CategoriesBloc
     extends Bloc<BrowseCategoriesEvent, BrowseCategoriesState> {
-  BrowseCategoriesBloc() : super(BrowseCategoriesState());
+  CategoriesBloc() : super(BrowseCategoriesState());
 
   final browseRepo = BrowseProductsRepository();
 

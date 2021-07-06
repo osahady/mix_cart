@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mix/src/features/browse_cats/bloc/browse_categories_bloc.dart';
-import 'package:mix/src/features/browse_products/bloc/browse_bloc.dart';
+import 'package:mix/src/features/browse_cats/bloc/categories_bloc.dart';
+import 'package:mix/src/features/browse_products/bloc/products_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
 
 class ProductsList extends StatefulWidget {
@@ -27,7 +27,7 @@ class _ProductsListState extends State<ProductsList> {
   }
 
   Widget _buildPageBody() {
-    return BlocBuilder<BrowseBloc, BrowseState>(
+    return BlocBuilder<ProductsBloc, BrowseState>(
       builder: (context, state) {
         switch (state.status) {
           case BrowseStatus.initial:

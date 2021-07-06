@@ -1,4 +1,4 @@
-part of 'browse_categories_bloc.dart';
+part of 'categories_bloc.dart';
 
 abstract class BrowseCategoriesEvent extends Equatable {
   const BrowseCategoriesEvent();

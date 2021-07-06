@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mix/src/features/browse_cats/bloc/browse_categories_bloc.dart';
-import 'package:mix/src/features/browse_products/bloc/browse_bloc.dart';
+import 'package:mix/src/features/browse_cats/bloc/categories_bloc.dart';
+import 'package:mix/src/features/browse_products/bloc/products_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
 
 class ProductsListView extends StatefulWidget {
@@ -32,7 +32,7 @@ class _ProductsListViewState extends State<ProductsListView> {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              BlocBuilder<BrowseCategoriesBloc, BrowseCategoriesState>(
+              BlocBuilder<CategoriesBloc, BrowseCategoriesState>(
                 builder: (context, state) {
                   switch (state.status) {
                     case BrowseCategoriesStatus.initial:
@@ -44,8 +44,8 @@ class _ProductsListViewState extends State<ProductsListView> {
 
                       return SizedBox(
                         height: 300,
-                        child: BlocBuilder<BrowseCategoriesBloc,
-                            BrowseCategoriesState>(
+                        child:
+                            BlocBuilder<CategoriesBloc, BrowseCategoriesState>(
                           builder: (context, state) {
                             return CategoriesListView(state: state);
                           },
@@ -81,7 +81,7 @@ class _ProductsListViewState extends State<ProductsListView> {
   }
 
   void _onScroll() {
-    if (_isBottom) context.read<BrowseBloc>().add(ProductFetched());
+    if (_isBottom) context.read<ProductsBloc>().add(ProductFetched());
   }
 
   bool get _isBottom {

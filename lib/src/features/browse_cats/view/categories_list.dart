@@ -21,7 +21,7 @@
 
 //   Widget _buildPageBody() {
 //     return Center(
-//       child: BlocBuilder<BrowseCategoriesBloc, BrowseCategoriesState>(
+//       child: BlocBuilder<CategoriesBloc, BrowseCategoriesState>(
 //         builder: (context, state) {
 //           switch (state.status) {
 //             case BrowseCategoriesStatus.initial:
