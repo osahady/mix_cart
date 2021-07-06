@@ -9,7 +9,7 @@ import 'package:rxdart/rxdart.dart';
 part 'browse_categories_event.dart';
 part 'browse_categories_state.dart';
 
-const _categoriesLimit = 5;
+const _categoriesLimit = 10;
 
 class BrowseCategoriesBloc
     extends Bloc<BrowseCategoriesEvent, BrowseCategoriesState> {

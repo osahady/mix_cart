@@ -31,6 +31,8 @@ class ProductTile extends StatelessWidget {
     try {
       String url = "https://mixcart.com.tr/storage/$image";
 
+      // return Image.network(url);
+
       return CachedNetworkImage(
         imageUrl: url,
         placeholder: (context, url) => CircularProgressIndicator(),
