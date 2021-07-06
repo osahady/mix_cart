@@ -23,24 +23,31 @@ class _CategoriesListViewState extends State<CategoriesListView> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (context, index) {
-        if (index >= widget.state.categories.length) return BottomLoader();
-        final category = widget.state.categories[index];
-        // return SizedBox(
-        //   height: 100,
-        //   child: ListTile(
-        //     title: Text('${category.name}'),
-        //   ),
-        // );
-        return Text(' ${category.name}  |  ');
-      },
-      separatorBuilder: (context, index) => Divider(),
-      itemCount: widget.state.hasReachedMax
-          ? widget.state.categories.length
-          : widget.state.categories.length + 1,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: ListView.separated(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          if (index >= widget.state.categories.length) return BottomLoader();
+          final category = widget.state.categories[index];
+          // return SizedBox(
+          //   height: 100,
+          //   child: ListTile(
+          //     title: Text('${category.name}'),
+          //   ),
+          // );
+          return Text(
+            '${category.name}',
+            // textDirection: TextDirection.rtl,
+          );
+        },
+        separatorBuilder: (context, index) => Text('  |  '),
+        itemCount: widget.state.hasReachedMax
+            ? widget.state.categories.length
+            : widget.state.categories.length + 1,
+        controller: _scrollController,
+      ),
     );
   }
 
