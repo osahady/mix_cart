@@ -13,7 +13,7 @@ part 'products_state.dart';
 
 const _productsLimit = 10;
 
-class ProductsBloc extends Bloc<BrowseEvent, BrowseState> {
+class ProductsBloc extends HydratedBloc<BrowseEvent, BrowseState> {
   ProductsBloc() : super(BrowseState());
 
   final browseRepo = BrowseProductsRepository();
@@ -74,9 +74,9 @@ class ProductsBloc extends Bloc<BrowseEvent, BrowseState> {
     return browseRepo.getProducts(qry: qryParams);
   }
 
-  // @override
-  // BrowseState? fromJson(Map<String, dynamic> json) => BrowseState.fromMap(json);
+  @override
+  BrowseState? fromJson(Map<String, dynamic> json) => BrowseState.fromMap(json);
 
-  // @override
-  // Map<String, dynamic>? toJson(BrowseState state) => state.toMap();
+  @override
+  Map<String, dynamic>? toJson(BrowseState state) => state.toMap();
 }

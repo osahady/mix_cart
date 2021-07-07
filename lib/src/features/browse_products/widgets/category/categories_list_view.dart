@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
 
 class CategoriesListView extends StatefulWidget {
-  final BrowseCategoriesState state;
+  final CategoriesState state;
 
   const CategoriesListView({Key? key, required this.state}) : super(key: key);
 

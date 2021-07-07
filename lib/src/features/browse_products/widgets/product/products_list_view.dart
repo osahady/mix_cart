@@ -32,20 +32,15 @@ class _ProductsListViewState extends State<ProductsListView> {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              BlocBuilder<CategoriesBloc, BrowseCategoriesState>(
+              BlocBuilder<CategoriesBloc, CategoriesState>(
                 builder: (context, state) {
                   switch (state.status) {
                     case BrowseCategoriesStatus.initial:
                       return Waiting();
                     case BrowseCategoriesStatus.success:
-                      // return _buildCats();
-
-                      // return Text('bringing cats');
-
                       return SizedBox(
                         height: 300,
-                        child:
-                            BlocBuilder<CategoriesBloc, BrowseCategoriesState>(
+                        child: BlocBuilder<CategoriesBloc, CategoriesState>(
                           builder: (context, state) {
                             return CategoriesListView(state: state);
                           },
@@ -89,39 +84,5 @@ class _ProductsListViewState extends State<ProductsListView> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
     return currentScroll >= (maxScroll * 0.9);
-  }
-
-  Widget _buildCats() {
-    return SizedBox(
-      height: 100,
-      child: ListView(
-        // This next line does the trick.
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-
-        children: <Widget>[
-          Container(
-            width: 160.0,
-            color: Colors.red,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.green,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.yellow,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.orange,
-          ),
-        ],
-      ),
-    );
   }
 }

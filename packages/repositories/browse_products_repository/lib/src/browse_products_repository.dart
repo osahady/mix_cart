@@ -17,7 +17,7 @@ class BrowseProductsRepository {
     List<Product> products;
     try {
       rawProducts = res['data'] as List;
-      products = rawProducts.map((map) => Product.fromMap(map)).toList();
+      products = rawProducts.map((map) => Product.fromJson(map)).toList();
     } catch (e) {
       throw JsonDeserializationException();
     }

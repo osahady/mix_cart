@@ -20,7 +20,7 @@ class Product {
     required this.images,
   });
 
-  factory Product.fromMap(Map<String, dynamic> map) => _$ProductFromJson(map);
+  factory Product.fromJson(Map<String, dynamic> map) => _$ProductFromJson(map);
 
-  Map<String, dynamic> toMap() => _$ProductToJson(this);
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
