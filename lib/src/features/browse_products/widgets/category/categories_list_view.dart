@@ -31,13 +31,7 @@ class _CategoriesListViewState extends State<CategoriesListView> {
         itemBuilder: (context, index) {
           if (index >= widget.state.categories.length) return BottomLoader();
           final category = widget.state.categories[index];
-          // return SizedBox(
-          //   width: 100,
-          //   height: 100,
-          //   child: ListTile(
-          //     title: Text('${category.name}'),
-          //   ),
-          // );
+
           String url = "https://mixcart.com.tr/storage/${category.image}";
           return Padding(
             padding: const EdgeInsets.all(12),
@@ -45,8 +39,8 @@ class _CategoriesListViewState extends State<CategoriesListView> {
               children: [
                 Text('${category.name}'),
                 Container(
-                  width: 200,
-                  height: 200,
+                  width: 150,
+                  height: 150,
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(50)),
                     child: Image.network(url),

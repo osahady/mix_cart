@@ -20,9 +20,5 @@ class ProductsPage extends StatelessWidget {
       ],
       child: ProductsList(),
     );
-    // return BlocProvider(
-    //   create: (_) => ProductsBloc()..add(ProductFetched()),
-    //   child: ProductsList(),
-    // );
   }
 }
