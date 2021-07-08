@@ -14,14 +14,7 @@ class _ProductsListState extends State<ProductsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: _buildAppBar(),
       body: _buildPageBody(),
-    );
-  }
-
-  PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      title: Text('عرض المنتجات'),
     );
   }
 
@@ -30,13 +23,13 @@ class _ProductsListState extends State<ProductsList> {
       builder: (context, state) {
         switch (state.status) {
           case BrowseStatus.initial:
-            return Waiting();
+            return WaitingProducts();
 
           case BrowseStatus.success:
             return ProductsListView(state: state);
 
           case BrowseStatus.failure:
-            return Text('fail to bring products');
+            return ProductsErrorMessage();
         }
       },
     );

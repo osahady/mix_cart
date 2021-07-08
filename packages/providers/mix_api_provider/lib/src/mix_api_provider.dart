@@ -46,6 +46,13 @@ class MixApiProvider {
       response = await _dio.get(
         _endpoint + path,
         queryParameters: qryParams,
+        options: Options(
+          contentType: 'application/json',
+          headers: {
+            'accept': 'application/json',
+            'Connection': 'keep-alive',
+          },
+        ),
       );
       print('Info: ${response.data}');
       return response.data;

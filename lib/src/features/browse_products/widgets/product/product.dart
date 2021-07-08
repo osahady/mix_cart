@@ -6,3 +6,6 @@ export 'product_card.dart';
 export 'product_title.dart';
 export 'sliver_box.dart';
 export 'sliver_grid_products.dart';
+export 'products_error_message.dart';
+export 'waiting_products.dart';
+export 'product_image.dart';

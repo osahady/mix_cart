@@ -20,13 +20,16 @@ class SliverGridProducts extends StatelessWidget {
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) {
+          if (index >= state.products.length) return BottomLoader();
           final product = state.products[index];
           return Container(
             alignment: Alignment.center,
             child: ProductCard(product: product, index: index),
           );
         },
-        childCount: state.products.length,
+        childCount: state.hasReachedMax
+            ? state.products.length
+            : state.products.length + 2,
       ),
     );
   }
