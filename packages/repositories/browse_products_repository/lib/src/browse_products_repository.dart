@@ -7,40 +7,48 @@ class BrowseProductsRepository {
   Future<List<Product>> getProducts({
     required Map<String, dynamic> qry,
   }) async {
-    Map<String, dynamic> res;
+    Map<String, dynamic> _res;
     try {
-      res = await _api.getHttp(qryParams: qry, path: '/material');
+      _res = await _api.getHttp(qryParams: qry, path: '/material');
     } catch (e) {
       rethrow;
     }
-    List rawProducts;
-    List<Product> products;
-    try {
-      rawProducts = res['data'] as List;
-      products = rawProducts.map((map) => Product.fromJson(map)).toList();
-    } catch (e) {
-      throw JsonDeserializationException();
-    }
-    return products;
+    return _parseProducts(_res);
   }
 
   Future<List<Category>> getCategories({
     required Map<String, dynamic> qry,
   }) async {
-    Map<String, dynamic> res;
+    Map<String, dynamic> _res;
     try {
-      res = await _api.getHttp(qryParams: qry, path: '/category');
+      _res = await _api.getHttp(qryParams: qry, path: '/category');
     } catch (e) {
       rethrow;
     }
-    List rawCategorys;
-    List<Category> categories;
+    return _parseCategories(_res);
+  }
+
+  List<Product> _parseProducts(Map<String, dynamic> res) {
+    List _rawProducts;
+    List<Product> _products;
     try {
-      rawCategorys = res['data'] as List;
-      categories = rawCategorys.map((e) => Category.fromJson(e)).toList();
+      _rawProducts = res['data'] as List;
+      _products = _rawProducts.map((map) => Product.fromJson(map)).toList();
     } catch (e) {
       throw JsonDeserializationException();
     }
-    return categories;
+    return _products;
+  }
+
+  List<Category> _parseCategories(Map<String, dynamic> res) {
+    List _rawCategorys;
+    List<Category> _categories;
+    try {
+      _rawCategorys = res['data'] as List;
+      _categories = _rawCategorys.map((e) => Category.fromJson(e)).toList();
+    } catch (e) {
+      throw JsonDeserializationException();
+    }
+    return _categories;
   }
 }

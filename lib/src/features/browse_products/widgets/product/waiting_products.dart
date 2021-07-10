@@ -41,7 +41,7 @@ class DummyGrid extends StatelessWidget {
               color: Colors.black26,
             ),
             color: Colors.black12,
-            alignment: Alignment.center,
+            alignment: Alignment.topCenter,
           );
         },
         childCount: 10,

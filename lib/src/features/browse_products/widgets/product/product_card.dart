@@ -14,6 +14,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String url = "https://mixcart.com.tr/storage/${product.images[0].image}";
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Card(
@@ -24,7 +25,7 @@ class ProductCard extends StatelessWidget {
               //TODO:1 rendering
               Column(
                 children: [
-                  ProductImage(product: product),
+                  ItemImage(url: url),
                   SizedBox(height: 20),
                   ProductTitle(product: product),
                   SizedBox(height: 30),

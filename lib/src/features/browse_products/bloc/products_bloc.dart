@@ -68,7 +68,7 @@ class ProductsBloc extends HydratedBloc<BrowseEvent, BrowseState> {
 
   Future<List<Product>> _fetchProducts([int startIndex = 0]) async {
     Map<String, dynamic> qryParams = {
-      'start': startIndex,
+      'offset': startIndex,
       'limit': _productsLimit,
     };
     return browseRepo.getProducts(qry: qryParams);

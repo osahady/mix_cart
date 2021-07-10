@@ -26,8 +26,10 @@ class _ProductsListViewState extends State<ProductsListView> {
     return CustomScrollView(
       controller: _scrollController,
       slivers: [
-        NiceAppBar(),
-        SliverBox(),
+        // NiceAppBar(),
+        // SliverBox(),
+        SliverToBoxAdapter(child: SizedBox(height: 50)),
+        CategoriesHorizontalList(),
         BlocBuilder<ProductsBloc, BrowseState>(
           builder: (context, state) {
             return SliverGridProducts(state: state);

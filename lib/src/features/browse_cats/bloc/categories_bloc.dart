@@ -65,7 +65,7 @@ class CategoriesBloc
 
   Future<List<Category>> _fetchCategories([int startIndex = 0]) async {
     Map<String, dynamic> qryParams = {
-      'start': startIndex,
+      'offset': startIndex,
       'limit': _categoriesLimit,
     };
     return browseRepo.getCategories(qry: qryParams);

@@ -8,4 +8,4 @@ export 'sliver_box.dart';
 export 'sliver_grid_products.dart';
 export 'products_error_message.dart';
 export 'waiting_products.dart';
-export 'product_image.dart';
+export '../item_image.dart';

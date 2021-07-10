@@ -13,7 +13,17 @@ class NiceAppBar extends StatelessWidget {
       floating: true,
       flexibleSpace: FlexibleSpaceBar(
         title: Text('آخر المنتجات'),
-        background: FlutterLogo(),
+        background: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return Container(
+              width: 125,
+              height: 124,
+              color: Colors.black12,
+            );
+          },
+          itemCount: 10,
+        ),
       ),
     );
   }

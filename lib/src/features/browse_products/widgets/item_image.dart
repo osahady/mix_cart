@@ -1,34 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
 
-class ProductImage extends StatelessWidget {
-  const ProductImage({
+class ItemImage extends StatelessWidget {
+  const ItemImage({
     Key? key,
-    required this.product,
+    required this.url,
   }) : super(key: key);
 
-  final Product product;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
     try {
-      String url = "https://mixcart.com.tr/storage/${product.images[0].image}";
       return CachedNetworkImage(
         imageUrl: url,
-        placeholder: (context, url) => WaitingProductImage(),
-        errorWidget: (context, url, error) => ErrorProductImage(),
+        placeholder: (context, url) => WaitingItemImage(),
+        errorWidget: (context, url, error) => ErrorItemImage(),
       );
 
       // return Image.network(
       //   url,
       //   loadingBuilder: (context, child, loadingProgress) =>
-      //       WaitingProductImage(),
-      //   errorBuilder: (context, error, stackTrace) => ErrorProductImage(),
+      //       WaitingItemImage(),
+      //   errorBuilder: (context, error, stackTrace) => ErrorItemImage(),
       // );
     } catch (e) {
       print('خطأ أثناء جلب صورة المنتج');
-      return ErrorProductImage();
+      return ErrorItemImage();
     }
 
     // return CachedNetworkImage(
@@ -42,8 +40,8 @@ class ProductImage extends StatelessWidget {
   }
 }
 
-class ErrorProductImage extends StatelessWidget {
-  const ErrorProductImage({
+class ErrorItemImage extends StatelessWidget {
+  const ErrorItemImage({
     Key? key,
   }) : super(key: key);
 
@@ -57,8 +55,8 @@ class ErrorProductImage extends StatelessWidget {
   }
 }
 
-class WaitingProductImage extends StatelessWidget {
-  const WaitingProductImage({
+class WaitingItemImage extends StatelessWidget {
+  const WaitingItemImage({
     Key? key,
   }) : super(key: key);
 
