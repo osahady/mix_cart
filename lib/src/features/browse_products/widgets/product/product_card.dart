@@ -14,7 +14,35 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String url = "https://mixcart.com.tr/storage/${product.images[0].image}";
+    String url;
+
+    try {
+      url = "https://mixcart.com.tr/storage/${product.images[0].image}";
+    } catch (e) {
+      return Directionality(
+        textDirection: TextDirection.rtl,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                //TODO:1 rendering
+                Column(
+                  children: [
+                    ErrorItemImage(),
+                    SizedBox(height: 20),
+                    ProductTitle(product: product),
+                    SizedBox(height: 30),
+                    Text('وصف المنتج ${index + 1}')
+                  ],
+                ),
+                PriceWidget(product: product),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Card(

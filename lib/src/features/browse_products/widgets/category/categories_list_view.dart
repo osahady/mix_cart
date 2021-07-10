@@ -25,40 +25,43 @@ class _CategoriesListViewState extends State<CategoriesListView> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: ListView.separated(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          if (index >= widget.state.categories.length) return BottomLoader();
-          final category = widget.state.categories[index];
+      child: SizedBox(
+        height: 275,
+        child: ListView.separated(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            if (index >= widget.state.categories.length) return BottomLoader();
+            final category = widget.state.categories[index];
 
-          String url = "https://mixcart.com.tr/storage/${category.image}";
-          return Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              children: [
-                Text('${category.name}'),
-                Container(
-                  width: 150,
-                  height: 150,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
-                    child: Image.network(url),
+            String url = "https://mixcart.com.tr/storage/${category.image}";
+            return Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  Text('${category.name}'),
+                  Container(
+                    width: 200,
+                    height: 200,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                      child: Image.network(url),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
+                ],
+              ),
+            );
 
-          // return Text(
-          //   '${category.name}',
-          // );
-        },
-        separatorBuilder: (context, index) => Text('    '),
-        itemCount: widget.state.hasReachedMax
-            ? widget.state.categories.length
-            : widget.state.categories.length + 1,
-        controller: _scrollController,
+            // return Text(
+            //   '${category.name}',
+            // );
+          },
+          separatorBuilder: (context, index) => Text('    '),
+          itemCount: widget.state.hasReachedMax
+              ? widget.state.categories.length
+              : widget.state.categories.length + 1,
+          controller: _scrollController,
+        ),
       ),
     );
   }

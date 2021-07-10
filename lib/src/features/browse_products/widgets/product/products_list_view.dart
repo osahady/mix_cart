@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mix/src/features/browse_cats/bloc/categories_bloc.dart';
 import 'package:mix/src/features/browse_products/bloc/products_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
 
@@ -29,7 +30,12 @@ class _ProductsListViewState extends State<ProductsListView> {
         // NiceAppBar(),
         // SliverBox(),
         SliverToBoxAdapter(child: SizedBox(height: 50)),
-        CategoriesHorizontalList(),
+        // CategoriesHorizontalList(),
+        BlocBuilder<CategoriesBloc, CategoriesState>(
+          builder: (context, state) {
+            return SliverToBoxAdapter(child: CategoriesListView(state: state));
+          },
+        ),
         BlocBuilder<ProductsBloc, BrowseState>(
           builder: (context, state) {
             return SliverGridProducts(state: state);
