@@ -14,6 +14,9 @@ class _ProductsListState extends State<ProductsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('عرض المنتجات'),
+      ),
       body: _buildPageBody(),
     );
   }

@@ -1,0 +1,16 @@
+name: hive_provider
+description: A Dart package that cache data from Mix Cart API.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  hive: ^2.0.4
+  models:
+    path: ../../models
+
+dev_dependencies:
+  hive_generator: ^1.1.0
+  build_runner: ^2.0.6
