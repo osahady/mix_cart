@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mix/size_config.dart';
 import 'package:mix/src/features/browse_cats/bloc/categories_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
@@ -26,7 +27,7 @@ class _CategoriesListViewState extends State<CategoriesListView> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: SizedBox(
-        height: 275,
+        height: getProportionateScreenHeight(150),
         child: ListView.separated(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
@@ -37,18 +38,45 @@ class _CategoriesListViewState extends State<CategoriesListView> {
             String url = "https://mixcart.com.tr/storage/${category.image}";
             return Padding(
               padding: const EdgeInsets.all(12),
-              child: Column(
-                children: [
-                  Text('${category.name}'),
-                  Container(
-                    width: 200,
-                    height: 200,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                      child: Image.network(url),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                child: Stack(
+                  children: [
+                    Container(
+                      height: getProportionateScreenHeight(200),
+                      width: getProportionateScreenWidth(350),
+                      child: Image.network(
+                        url,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                ],
+                    Container(
+                      height: getProportionateScreenHeight(200),
+                      width: getProportionateScreenWidth(350),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0xFF343434).withOpacity(.15),
+                            Color(0xFF343434).withOpacity(.8),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 10,
+                      bottom: 5,
+                      child: Text(
+                        '${category.name}',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
 

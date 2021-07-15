@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mix/size_config.dart';
 import 'package:mix/src/features/browse_cats/bloc/categories_bloc.dart';
 import 'package:mix/src/features/browse_products/bloc/products_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
@@ -29,11 +30,15 @@ class _ProductsListViewState extends State<ProductsListView> {
       slivers: [
         // NiceAppBar(),
         // SliverBox(),
-        SliverToBoxAdapter(child: SizedBox(height: 50)),
+        CategoryTitle(text: 'الفئات'),
+        SliverToBoxAdapter(
+            child: SizedBox(height: getProportionateScreenHeight(0))),
         // CategoriesHorizontalList(),
         BlocBuilder<CategoriesBloc, CategoriesState>(
           builder: (context, state) {
-            return SliverToBoxAdapter(child: CategoriesListView(state: state));
+            return SliverToBoxAdapter(
+              child: CategoriesListView(state: state),
+            );
           },
         ),
         BlocBuilder<ProductsBloc, BrowseState>(
@@ -60,5 +65,32 @@ class _ProductsListViewState extends State<ProductsListView> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
     return currentScroll >= (maxScroll * 0.9);
+  }
+}
+
+class CategoryTitle extends StatelessWidget {
+  const CategoryTitle({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              fontFamily: 'Cairo',
+              fontSize: getProportionateScreenWidth(18),
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

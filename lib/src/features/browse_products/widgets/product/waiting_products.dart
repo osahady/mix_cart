@@ -8,7 +8,7 @@ class WaitingProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        NiceAppBar(),
+        // NiceAppBar(),
         SliverPadding(
           padding: const EdgeInsets.all(8.0),
           sliver: DummyGrid(),
