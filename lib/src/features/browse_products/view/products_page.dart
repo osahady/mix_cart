@@ -5,6 +5,7 @@ import 'package:mix/src/features/browse_products/bloc/products_bloc.dart';
 import 'package:mix/src/features/browse_products/view/products_list.dart';
 
 class ProductsPage extends StatelessWidget {
+  static const String routeName = '/produts_page';
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
