@@ -28,12 +28,7 @@ class _ProductsListViewState extends State<ProductsListView> {
     return CustomScrollView(
       controller: _scrollController,
       slivers: [
-        // NiceAppBar(),
-        // SliverBox(),
         CategoryTitle(text: 'الفئات'),
-        SliverToBoxAdapter(
-            child: SizedBox(height: getProportionateScreenHeight(0))),
-        // CategoriesHorizontalList(),
         BlocBuilder<CategoriesBloc, CategoriesState>(
           builder: (context, state) {
             return SliverToBoxAdapter(
@@ -79,7 +74,7 @@ class CategoryTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        padding: const EdgeInsets.only(top: 10.0),
         child: Center(
           child: Text(
             text,

@@ -3,6 +3,7 @@ import 'package:mix/size_config.dart';
 import 'package:mix/src/features/browse_cats/bloc/categories_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
+import 'package:models/src/category.dart';
 
 class CategoriesListView extends StatefulWidget {
   final CategoriesState state;
@@ -36,49 +37,7 @@ class _CategoriesListViewState extends State<CategoriesListView> {
             final category = widget.state.categories[index];
 
             String url = "https://mixcart.com.tr/storage/${category.image}";
-            return Padding(
-              padding: const EdgeInsets.all(12),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                child: Stack(
-                  children: [
-                    Container(
-                      height: getProportionateScreenHeight(200),
-                      width: getProportionateScreenWidth(350),
-                      child: Image.network(
-                        url,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Container(
-                      height: getProportionateScreenHeight(200),
-                      width: getProportionateScreenWidth(350),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xFF343434).withOpacity(.15),
-                            Color(0xFF343434).withOpacity(.8),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: 10,
-                      bottom: 5,
-                      child: Text(
-                        '${category.name}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
+            return CategoryCard(url: url, category: category);
 
             // return Text(
             //   '${category.name}',

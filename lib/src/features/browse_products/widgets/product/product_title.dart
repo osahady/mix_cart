@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mix/constants.dart';
 import 'package:models/models.dart';
 
 class ProductTitle extends StatelessWidget {
@@ -13,8 +14,9 @@ class ProductTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '${product.name} ',
+      maxLines: 3,
       style: TextStyle(
-        color: Colors.teal,
+        color: kPrimaryColor,
         fontWeight: FontWeight.bold,
       ),
     );

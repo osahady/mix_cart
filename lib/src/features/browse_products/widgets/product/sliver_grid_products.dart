@@ -13,10 +13,10 @@ class SliverGridProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 1,
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
-        childAspectRatio: .4,
+        childAspectRatio: 1,
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) {
@@ -29,7 +29,7 @@ class SliverGridProducts extends StatelessWidget {
         },
         childCount: state.hasReachedMax
             ? state.products.length
-            : state.products.length + 2,
+            : state.products.length + 1,
       ),
     );
   }

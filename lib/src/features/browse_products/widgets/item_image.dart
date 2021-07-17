@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:mix/size_config.dart';
 
 class ItemImage extends StatelessWidget {
   const ItemImage({
@@ -12,10 +13,20 @@ class ItemImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     try {
-      return CachedNetworkImage(
-        imageUrl: url,
-        placeholder: (context, url) => WaitingItemImage(),
-        errorWidget: (context, url, error) => ErrorItemImage(),
+      return Container(
+        width: getProportionateScreenWidth(140),
+        child: Container(
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+            child: CachedNetworkImage(
+              imageUrl: url,
+              placeholder: (context, url) => WaitingItemImage(),
+              errorWidget: (context, url, error) => ErrorItemImage(),
+            ),
+          ),
+        ),
       );
 
       // return Image.network(
