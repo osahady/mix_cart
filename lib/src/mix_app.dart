@@ -12,7 +12,7 @@ class MixApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Color(0xFFefefef),
         fontFamily: "Cairo",
         textTheme: TextTheme(
           bodyText1: TextStyle(color: kTextColor),

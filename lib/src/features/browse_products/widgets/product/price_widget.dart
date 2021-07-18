@@ -12,27 +12,28 @@ class PriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      child: Container(
-        alignment: Alignment.center,
-        height: getProportionateScreenHeight(30),
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
+    return Row(
+      children: [
+        Text('السعر : '),
+        Container(
+          alignment: Alignment.center,
+          height: getProportionateScreenHeight(30),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+          width: getProportionateScreenWidth(100),
+          child: Text(
+            '\$${product.price.toStringAsFixed(2)}',
+            style: TextStyle(
+                fontSize: getProportionateScreenWidth(13),
+                fontWeight: FontWeight.w600,
+                color: Colors.white),
           ),
         ),
-        width: getProportionateScreenWidth(100),
-        child: Text(
-          '\$${product.price.toStringAsFixed(2)}',
-          style: TextStyle(
-              fontSize: getProportionateScreenWidth(13),
-              fontWeight: FontWeight.w600,
-              color: Colors.white),
-        ),
-      ),
-      bottom: 0,
-      left: 0,
+      ],
     );
   }
 }

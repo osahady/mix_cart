@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mix/constants.dart';
 import 'package:mix/src/features/browse_products/bloc/products_bloc.dart';
 import 'package:mix/src/features/browse_products/widgets/widgets.dart';
 

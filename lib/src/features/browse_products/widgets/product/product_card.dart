@@ -23,48 +23,60 @@ class ProductCard extends StatelessWidget {
       return Directionality(
         textDirection: TextDirection.rtl,
         child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Stack(
-              children: [
-                //TODO:1 rendering
-                Column(
-                  children: [
-                    ErrorItemImage(),
-                    ProductTitle(product: product),
-                    Text(
-                      '${product.summary} ${index + 1}',
-                      maxLines: 3,
-                    )
-                  ],
-                ),
-                PriceWidget(product: product),
-              ],
-            ),
+          child: Stack(
+            children: [
+              //TODO:1 rendering
+              Column(
+                children: [
+                  ErrorItemImage(),
+                  ProductTitle(product: product),
+                  Text(
+                    '${product.summary} ${index + 1}',
+                    maxLines: 3,
+                  )
+                ],
+              ),
+              PriceWidget(product: product),
+            ],
           ),
         ),
       );
     }
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Container(
-        width: double.infinity,
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Stack(
-              children: [
-                //TODO:1 rendering
-                Column(
-                  children: [
-                    ItemImage(url: url),
-                    ProductTitle(product: product),
-                    ProductSummary(product: product),
-                  ],
-                ),
-                PriceWidget(product: product),
-              ],
-            ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: ProductTitle(product: product),
+                      ),
+                      SizedBox(height: 20),
+                      PriceWidget(product: product),
+                    ],
+                  ),
+                  ItemImage(url: url),
+                ],
+              ),
+              SizedBox(height: 20),
+              ProductSummary(product: product),
+            ],
           ),
         ),
       ),
